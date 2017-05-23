@@ -27,7 +27,7 @@ let plugin = {
 };
 
 plugin.register.attributes = {
-	pkg: require('./package.json')
+	pkg: require('../package.json')
 };
 
 exports.register = plugin.register;
