@@ -1,6 +1,6 @@
 {
   "name": "good-health-check",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "Hapi Health Check Plugins",
   "main": "dist/index.js",
   "scripts": {
@@ -8,7 +8,6 @@
     "build": "babel ./lib -d ./dist",
     "prepublish": "yarn build"
   },
-
   "author": "ken <geunbaelee@gmail.com>",
   "repository": "Pellue/good-health-check",
   "license": "MIT",
@@ -22,5 +21,4 @@
     "jest-cli": "^19.0.2",
     "regenerator-runtime": "^0.10.3"
   }
-
 }
