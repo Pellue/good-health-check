@@ -1,12 +1,15 @@
 {
   "name": "@plip/hapi-common-logger",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "plip common hapi logger ",
   "main": "dist/index.js",
   "scripts": {
+    "init": "mkdir dist",
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean && npm run init",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel ./lib -d ./dist",
-    "prepublish": "npm build"
+    "prepublish": "yarn build"
   },
   "author": "geunbaelee <geunbaelee@gmail.com>",
   "repository": "Pellue/plip-hapi-logger",
