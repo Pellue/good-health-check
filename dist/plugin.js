@@ -1,29 +1,55 @@
-let plugin = {
-	register: (server, options, next) => {
+'use strict';
 
-		//todo: user dependencies in attributes
-		//todo: https://github.com/hapijs/hapi/issues/2332
-		// server.dependency('plip-auth-jwt', after);
-		// internals.applyRoutes(server, next);
+var plugin = {};
 
-		server.route({
-			method: 'GET',
-			path: '/_ah/health',
-			config: {
-				tags: ['health'],
-				plugins: {
-					good: {
-						suppressResponseEvent: true
-					}
-				},
-				handler: (request, reply) => {
-					reply({ message: 'ok' });
-				}
-			}
-		});
+var opts = {
 
-		next();
+	includes: {
+		request: ['headers', 'payload'],
+		response: ['payload']
+	},
+	ops: {
+		interval: 60000
+	},
+	reporters: {
+		consoleReporter: [{
+			module: 'good-squeeze',
+			name: 'Squeeze',
+			args: [{
+				request: '*',
+				response: '*',
+				ops: '*',
+				log: '*',
+				error: '*'
+			}]
+		}, {
+			module: require('./good-filter'),
+			args: [{
+				request: '*',
+				response: '*',
+				log: '*',
+				error: '*'
+			}]
+		}, {
+			module: 'good-console',
+			args: [{
+				color: false
+			}]
+		}, 'stdout']
 	}
+};
+
+plugin.register = function (server, optinos, next) {
+	server.register({
+		register: require('good'),
+		options: opts
+	}, function (err) {
+		if (err) {
+			throw err;
+		}
+	});
+
+	next();
 };
 
 plugin.register.attributes = {

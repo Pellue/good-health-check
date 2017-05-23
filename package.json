@@ -1,15 +1,15 @@
 {
-  "name": "good-health-check",
-  "version": "0.4.0",
-  "description": "Hapi Health Check Plugins",
+  "name": "@plip/hapi-common-logger",
+  "version": "0.3.0",
+  "description": "plip common hapi logger ",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel ./lib -d ./dist",
-    "prepublish": "yarn build"
+    "prepublish": "npm build"
   },
-  "author": "ken <geunbaelee@gmail.com>",
-  "repository": "Pellue/good-health-check",
+  "author": "geunbaelee <geunbaelee@gmail.com>",
+  "repository": "Pellue/plip-hapi-logger",
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.24.1",
